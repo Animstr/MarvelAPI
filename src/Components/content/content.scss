@@ -1,0 +1,114 @@
+.content {
+    position: relative;
+    padding-top: 44px;
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 2fr;
+        grid-auto-columns: 200px;
+        gap: 29px 25px;
+    }
+    .cardsBlock {
+        grid-column: 1 / 4;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 29px 25px;
+        grid-auto-rows: 320px;
+        grid-auto-columns: 200px;
+    }
+    &-hero-card {
+        background: #232222;
+        transition: 0.3s all;
+        h2 {
+            color: #FFF;
+            font-size: 22px;
+            font-weight: 700;
+            margin: 15px;
+        }
+        img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        &:hover{
+            filter: drop-shadow(0px 5px 20px #9F0013);
+            transform: translateY(-9px);
+        }
+    }
+    .hero-description {
+        padding: 25px;
+        grid-column: 4 / 5;
+        grid-row: 1 / 4;
+        height: fit-content;
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+        .hero-preview {
+            display: flex;
+            img {
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+                margin-right: 25px;
+            }
+            h2 {
+                margin: 0;
+                font-size: 22px;
+                font-weight: 700;
+            }
+            .btn {
+                margin: 0;
+                margin-top: 35px;
+                width: 101px;
+                &-grey {
+                    margin-top: 10px;
+                }
+            }
+        }
+        .description {
+            margin-top: 21px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        h2 {
+            margin-top: 16px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .comics-item {
+            padding: 4px 0 4px 10px;
+            padding-left: 10px;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 400;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            a{
+                color: black;
+            }
+        }
+        .no-comics{
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+    .btn {
+        display: block;
+        margin: 0 24% 45px;
+        width: 170px;
+        &:disabled{
+            background-color: #860111;
+            
+        }
+    }
+    .bgHero {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    a{
+        text-decoration: none;
+    }
+
+    .active {
+        filter: drop-shadow(0px 5px 20px #9F0013);
+            transform: translateY(-9px);
+    }
+}

@@ -1,0 +1,21 @@
+header {
+    margin-top: 50px;
+    color: #000;
+    font-size: 28px;
+    font-weight: 700;
+    .header__right {
+        h1{
+            font-size: 28px;
+        
+        }
+        span {
+            color:red;
+        }
+    }
+    .header__left {
+        text-align: end;
+        span {
+            color:red;
+        }
+    }
+}
