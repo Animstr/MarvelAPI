@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { useEffect, useState } from "react";
 import { Fragment } from "react";
 
 import Button from "../buttons/button";
@@ -6,56 +6,45 @@ import ErrorMessage from "../errorMessage/errorMessage";
 import MarvelService from "../../services/MarvelService";
 import Skeleton from "../skeleton/Skeleton";
 
-class HeroDescription extends Component {
-    state = {
-        char: {},
-        loading: true,
-        error: false,
-        currentId: null
-    }
-    marvelService = new MarvelService ();
+const HeroDescription = (props) => {
 
-    recordCurrentId = () => {
-        this.setState({
-            currentId: this.props.currentId
-        })
-    }    
+    const [char, setChar] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    
+    const marvelService = new MarvelService ();
+    const {id} = props;
 
-    componentDidUpdate (prevProps) {
-        if (this.props.currentId !== prevProps.currentId){
-            this.recordCurrentId();
-            setTimeout(() => {this.getRandomHero()}, 100)
+    useEffect(() => {
+        if (id){
+            setTimeout(() => {getRandomHero(); console.log(1)}, 100);
         }
-        
+    }, [id])
+   
+    const getRandomHero = () => {
+        marvelService
+            .getCharacter(id)
+            .then(char => {
+                setChar(char);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+                setError(true);
+            });   
     }
-    getRandomHero = () => {
-        this.marvelService
-            .getCharacter(this.props.currentId)
-            .then(char => this.setState({
-                char,
-                loading: false
-            }))
-            .catch( () => {
-                this.setState({
-                loading: false,
-                error: true
-            })});
-        
-    }
-    render () {
-        const {char, loading, error} = this.state;
 
-        const loadingBlock = loading ? <Skeleton /> : null;
-        const errorBlock = error ? <ErrorMessage /> : null;
-        const charBlock = !(loading || error || !char) ? <CharDescriptionWraper char={char}/> : null;
-        return (
-            <div className="hero-description">
-                {loadingBlock}
-                {errorBlock}
-                {charBlock}
-            </div>
-            )
-        } 
+    const loadingBlock = loading ? <Skeleton /> : null;
+    const errorBlock = error ? <ErrorMessage /> : null;
+    const charBlock = !(loading || error || !char) ? <CharDescriptionWraper char={char}/> : null;
+
+    return (
+        <div className="hero-description">
+            {loadingBlock}
+            {errorBlock}
+            {charBlock}
+        </div>
+        )
 }
 
 const CharDescriptionWraper = ({char}) => {

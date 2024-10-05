@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 
 import './header.scss';
 
-function Header() {
+const Header = () => {
   return (
     <header>
         <Container>

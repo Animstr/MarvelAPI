@@ -6,13 +6,13 @@ import Content from '../content/content';
 import './App.scss';
 
 
-function App() {
+const App = () => {
   return (
-    <Fragment>
+    <>
         <Header />
         <Promo />
         <Content />
-    </Fragment>
+    </>
   );
 }
 
