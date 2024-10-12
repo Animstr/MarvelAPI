@@ -28,7 +28,17 @@
             padding-left: 30px;
             grid-column: 2 / 3;
             grid-row: 2 / 3;
-            align-self: flex-end;
+            display: flex;
+            justify-content: space-around;
+            a{
+                text-decoration: none;
+                align-self: flex-end;
+                .btn{
+                    width: 100px;
+                    height: 38px;
+                    margin: 0 auto;
+                }
+            }
         }
         .spinner{
             width: 40px;
@@ -67,14 +77,15 @@
             }
         }
         .btn {
+            width: 100px;
+            height: 38px;
             &::before{
                 background-color: #232222;
             }
             &::after{
                 background-color: #232222;
             }
-            align-self: flex-end;
-            margin: 0;
+            margin: 0 auto;
         }
         img {
             position: absolute;

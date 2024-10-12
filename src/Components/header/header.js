@@ -1,4 +1,5 @@
 import Container from 'react-bootstrap/Container';
+import { NavLink } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -10,11 +11,13 @@ const Header = () => {
         <Container>
             <Row>
                 <Col className='header__right'>
-                    <h1><span>Marvel</span> information portal</h1>
+                    <h1><NavLink end to={'/'}><span>Marvel</span></NavLink>  information portal</h1>
                 </Col>
 
                 <Col className='header__left'>
-                    <span>Characters</span> / Comics
+                <NavLink end to={'/'} style={({isActive}) => ({color: isActive ? 'red' : 'black'})}><span>Characters</span></NavLink>
+                    / 
+                <NavLink to={'/comics'} style={({isActive}) => ({color: isActive ? 'red' : 'black'})}>Comics</NavLink>
                 </Col>
             </Row>
         </Container>

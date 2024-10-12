@@ -1,11 +1,12 @@
 .content {
     position: relative;
     padding-top: 44px;
-    .wrapper {
+    &_wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 2fr;
         grid-auto-columns: 200px;
         gap: 29px 25px;
+        background-color: #fff;
     }
     .cardsBlock {
         grid-column: 1 / 4;

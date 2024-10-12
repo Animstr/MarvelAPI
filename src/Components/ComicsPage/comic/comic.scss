@@ -1,0 +1,59 @@
+.comic_wrapper{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto;
+    gap: 50px;
+    .comic_cover{
+        grid-column: 1 / 2;
+        height: 450px;
+    }
+
+    .comic_text{
+        grid-column: 2 / 3;
+        h2 {
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 26px;
+        }
+        .comic_description{
+            margin-top: 28px;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 21px;
+        }
+        .comic_pagesCount{
+            margin-top: 40px;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 21px;
+        }
+        .comic_language{
+            margin-top: 40px;
+            font-weight: 400;
+            font-size: 18px;
+            margin-top: 28px;
+        }
+        .comic_price{
+            margin-top: 28px;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 28px;
+            color: #9F0013;
+        }
+    }
+    .comic_back{
+        grid-column: 3 / 4;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 21px;
+        justify-self: flex-end;
+        color: black;
+        text-decoration: none;
+    }
+}
+.spinner {
+    grid-column: 1 / 4;
+    display: block;
+    margin: 0 auto;
+}

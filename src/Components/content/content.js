@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import React from 'react';
 
 import ErrorMessage from "../errorMessage/errorMessage";
-import MarvelService from "../../services/MarvelService";
+import useMarvelService from "../../services/MarvelService";
 import HeroDescription from "../heroDescription/heroDescription";
 
 import backgroundHero from '../../img/bg asset.svg';
@@ -17,9 +17,8 @@ const Content = () => {
     const [offset, setOffset] = useState(210);
     const [loadingNew, setLoadingNew] = useState(false);
     const [endChars, setEndChars] = useState(false);
-    const [error, setError] = useState(false);
     
-    const marvelService = new MarvelService ();
+    const {loading, error, getAllCharacters} = useMarvelService ();
 
     useEffect(() => {
         getNewChars();
@@ -27,8 +26,7 @@ const Content = () => {
 
     const getNewChars = (offset) => {
         loadingNewChars();
-        marvelService
-            .getAllCharacters(offset)
+        getAllCharacters(offset)
             .then( newChars => {
                 let ended = false;
                 if (newChars.length < 9) {
@@ -40,7 +38,6 @@ const Content = () => {
                 setEndChars(() => ended);
             })
             .catch( () => {
-                setError(true);
                 setEndChars(true);
             });
     }
@@ -82,7 +79,7 @@ const Content = () => {
     return (
         <section className="content">
             <Container>
-                <div className="wrapper">
+                <div className="content_wrapper">
                     <div className="cardsBlock">
                         {errorMessage}
                         {cards}

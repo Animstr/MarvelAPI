@@ -1,0 +1,44 @@
+.comics_wrapper{
+    margin-top: 45px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-columns: 225px;
+    gap: 57px 67px;
+    .comics{
+        width: 100%;
+        img{
+            width: 100%;
+            object-fit: cover;
+            height: 350px;
+        }
+        &_name{
+            margin-top: 10px;
+            line-height: 16px;
+            a{
+                text-decoration: none;
+                color: #000000;
+                font-weight: 700;
+                font-size: 14px;
+            }
+        }
+        .cost{
+            margin-top: 9px;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 16px;
+            color: rgba(0, 0, 0, 0.6);
+        }
+    }
+    .spinner{
+        grid-column: 1 / 5;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.btn{
+    display: block;
+    margin: 45px auto 50px;
+    width: 170px;
+    height: 38px;
+}

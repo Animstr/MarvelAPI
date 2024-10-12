@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 
 import ErrorMessage from '../errorMessage/errorMessage';
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/MarvelService';
 import Button from '../buttons/button';
 import spinner from '../../img/spinner.gif'
 import decoration from '../../img/Decoration.svg'
@@ -12,33 +12,25 @@ import './promo.scss';
 const Promo = () => {
 
     const [char, setChar] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
 
-    const marvelService = new MarvelService ();
+    const {loading, error, getCharacter, skipError} = useMarvelService();
 
     useEffect(() => {
         getRandomHero();
     }, [])
 
     const getRandomHero = () => {
-        marvelService
-            .getCharacter(Math.floor(Math.random() * (1011400 - 1011000)) + 1011000)
-            .then(char => {
-                setChar(char);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-                setError(true);
-            }); 
+
+        getCharacter(Math.floor(Math.random() * (1011400 - 1011000)) + 1011000)
+        .then(char => {
+            setChar(char);
+        }) 
     }
 
     const onGetRandomHero = () => {
         setChar({});
-        setLoading(true);
-        setError(false);
         getRandomHero();
+        skipError();
     }
 
     const spinnerBlock = loading ? <img src={spinner} className='spinner' /> : null;

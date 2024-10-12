@@ -1,42 +1,35 @@
 import { useEffect, useState } from "react";
-import { Fragment } from "react";
 
 import Button from "../buttons/button";
 import ErrorMessage from "../errorMessage/errorMessage";
-import MarvelService from "../../services/MarvelService";
+import useMarvelService from "../../services/MarvelService";
 import Skeleton from "../skeleton/Skeleton";
 
 const HeroDescription = (props) => {
 
     const [char, setChar] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-    
-    const marvelService = new MarvelService ();
+    const [loadForFirstRender, setLoadForFirstRender] = useState(true);
+    const {loading, error, getCharacter} = useMarvelService();
     const {id} = props;
+    
 
     useEffect(() => {
         if (id){
-            setTimeout(() => {getRandomHero(); console.log(1)}, 100);
+            setTimeout(() => getRandomHero(), 100);
         }
     }, [id])
    
     const getRandomHero = () => {
-        marvelService
-            .getCharacter(id)
-            .then(char => {
-                setChar(char);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-                setError(true);
-            });   
+        getCharacter(id)
+        .then(char => {
+            setChar(char);
+            setLoadForFirstRender(false);
+        });   
     }
 
-    const loadingBlock = loading ? <Skeleton /> : null;
+    const loadingBlock = loading || loadForFirstRender ? <Skeleton /> : null;
     const errorBlock = error ? <ErrorMessage /> : null;
-    const charBlock = !(loading || error || !char) ? <CharDescriptionWraper char={char}/> : null;
+    const charBlock = !(loading || error || !char || loadForFirstRender) ? <CharDescriptionWraper char={char}/> : null;
 
     return (
         <div className="hero-description">
@@ -62,7 +55,7 @@ const CharDescriptionWraper = ({char}) => {
     const imgStyle = thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg' ? {objectFit: 'contain'} : null;
 
     return (
-        <Fragment>
+        <>
             <div className="hero-preview">
                 <img src={thumbnail} alt={name} style={imgStyle}/>
                 <div className="hero-peview-text">
@@ -76,7 +69,7 @@ const CharDescriptionWraper = ({char}) => {
             </div>
             <h2>Comics:</h2>
             {comicsList}
-        </Fragment>
+        </>
     )
 }
 
