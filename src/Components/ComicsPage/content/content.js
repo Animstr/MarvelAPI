@@ -1,12 +1,11 @@
 import { Container } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import useMarvelService from '../../../services/MarvelService';
-import spinner from '../../../img/spinner.gif';
+import spinner from '../../../img/spinner.gif'
 import ErrorMessage from '../../errorMessage/errorMessage';
 
-import comicsImg from '../../../img/UW.svg';
-import './content.scss';
 import { Link } from 'react-router-dom';
+import './content.scss';
 
 const ComicsContent = () => {
     const [offset, setOffset] = useState(0)
@@ -18,6 +17,7 @@ const ComicsContent = () => {
     useEffect(() => {
         getComics();
     }, [])
+
     const getComics = () => {
         getAllComics(offset)
             .then(data => {

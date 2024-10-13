@@ -3,7 +3,7 @@ import ErrorMessage from "../../Components/errorMessage/errorMessage";
 
 import './404.scss';
 
-export const Page404 = () => {
+const Page404 = () => {
 
     return ( 
         <div className="NotFound-wrapper">
@@ -14,3 +14,5 @@ export const Page404 = () => {
         
     )
 }
+
+export default Page404;

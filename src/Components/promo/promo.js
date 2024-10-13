@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap';
 import ErrorMessage from '../errorMessage/errorMessage';
 import useMarvelService from '../../services/MarvelService';
 import Button from '../buttons/button';
-import spinner from '../../img/spinner.gif'
+import { Spinner } from '../spinner/spinner';
 import decoration from '../../img/Decoration.svg'
 
 import './promo.scss';
@@ -33,7 +33,7 @@ const Promo = () => {
         skipError();
     }
 
-    const spinnerBlock = loading ? <img src={spinner} className='spinner' /> : null;
+    const spinnerBlock = loading ? <Spinner /> : null;
     const errorMessage = error ? <ErrorMessage /> : null;
     const charCard = !(loading || error) ? <HeroCard char={char}/> : null;
 

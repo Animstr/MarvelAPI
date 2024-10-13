@@ -41,4 +41,39 @@
     margin: 45px auto 50px;
     width: 170px;
     height: 38px;
+    flex-shrink: 0;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 0;
+    position: relative;
+    border: 0;
+    transition: 0.2s transform;
+    &:before { 
+        content: "";
+        width: 17px;
+        height: 10px;
+        background-color: white;
+        position: absolute;
+        top: 0px;
+        left: -12px;
+        transform: skewX(-45deg);
+    }
+    &::after{
+        content: "";
+        width: 17px;
+        height: 10px;
+        background-color: white;
+        position: absolute;
+        bottom: 0px;
+        right: -12px;
+        transform: skewX(-45deg);
+    }
+    &-red {
+        background-color: #9F0013;
+        &:hover{
+            background-color: #9F0013;
+            color: #FFF;
+        }
+    }
 }

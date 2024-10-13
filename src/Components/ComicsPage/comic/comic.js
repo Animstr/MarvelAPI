@@ -1,4 +1,4 @@
-import spinner from '../../../img/spinner.gif'
+import { Spinner } from "../../spinner/spinner";
 import { useEffect, useState } from "react";
 
 import ErrorMessage from "../../errorMessage/errorMessage";
@@ -26,7 +26,7 @@ export const Comic = () => {
         });   
     }
 
-    const loadingBlock = loading ? <img src={spinner} className='spinner'/> : null;
+    const loadingBlock = loading ? <Spinner/> : null;
     const errorBlock = error ? <ErrorMessage /> : null;
     const charBlock = !(loading || error || !comic) ? <ComicWrapper comic={comic}/> : null;
 

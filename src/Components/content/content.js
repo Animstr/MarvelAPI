@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import React from 'react';
+import { Spinner } from "../spinner/spinner";
 
 import ErrorMessage from "../errorMessage/errorMessage";
 import useMarvelService from "../../services/MarvelService";
@@ -9,6 +10,7 @@ import HeroDescription from "../heroDescription/heroDescription";
 import backgroundHero from '../../img/bg asset.svg';
 
 import './content.scss';
+
 
 const Content = () => {
 

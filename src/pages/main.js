@@ -1,7 +1,7 @@
 import Promo from '../Components/promo/promo'
 import Content from '../Components/content/content';
 
-export const MainPage = () => {
+const MainPage = () => {
     return (
         <>
             <Promo/>
@@ -9,3 +9,5 @@ export const MainPage = () => {
         </>
     )
 }
+
+export default MainPage;
