@@ -118,3 +118,20 @@
         margin: 0 auto;
     }
 }
+.char-enter {
+    opacity: 0;
+}
+
+.char-enter-active {
+    opacity: 1;
+    transition: opacity 500ms;
+}
+
+.char-exit {
+    opacity: 1;
+}
+
+.char-exit-active {
+    opacity: 0;
+    transition: opacity 500ms;
+}

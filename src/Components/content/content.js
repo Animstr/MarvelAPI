@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import React from 'react';
-import { Spinner } from "../spinner/spinner";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import ErrorMessage from "../errorMessage/errorMessage";
 import useMarvelService from "../../services/MarvelService";
@@ -19,6 +19,7 @@ const Content = () => {
     const [offset, setOffset] = useState(210);
     const [loadingNew, setLoadingNew] = useState(false);
     const [endChars, setEndChars] = useState(false);
+    const [open, setOpen] = useState(true)
     
     const {loading, error, getAllCharacters} = useMarvelService ();
 
@@ -62,30 +63,39 @@ const Content = () => {
         }
     }
 
-    const cards = chars.length ? chars.map((card, i) => (
-        <div 
-            key={i}
-            ref={ref => itemRefs.current[i] = ref}
-            onClick={() => {
-                onChageChar(card.id);
-                focusOnItem(i);
-            }}
-            className="content-hero-card">
-            <img src={card.thumbnail} alt='hero-img'/>
-            <h2>{card.name}</h2>
-        </div> 
-    )) : null;
-
+    function renderCards () {
+        const cards = chars.length ? chars.map((card, i) => (
+            <CSSTransition key={card.id} timeout={500} classNames='char'>
+                <div 
+                    key={i}
+                    ref={ref => itemRefs.current[i] = ref}
+                    onClick={() => {
+                        onChageChar(card.id);
+                        focusOnItem(i);
+                    }}
+                    className="content-hero-card">
+                    <img src={card.thumbnail} alt='hero-img'/>
+                    <h2>{card.name}</h2>
+                </div>
+            </CSSTransition>
+        )) : null;
+        return (
+            <TransitionGroup component={null}>
+                {cards}
+            </TransitionGroup>
+        )
+    }
+    const items = renderCards();
     const errorMessage = error ? <ErrorMessage /> : null;
     
     return (
         <section className="content">
             <Container>
                 <div className="content_wrapper">
-                    <div className="cardsBlock">
-                        {errorMessage}
-                        {cards}
-                    </div>
+                        <div className="cardsBlock">
+                            {errorMessage}
+                            {items}
+                        </div>
                     <HeroDescription id={currentId}/>
                 </div>
                 <button 
