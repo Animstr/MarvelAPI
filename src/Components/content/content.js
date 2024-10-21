@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import React from 'react';
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
+import SearchPanel from "../searchPanel/searchPanel";
 import ErrorMessage from "../errorMessage/errorMessage";
 import useMarvelService from "../../services/MarvelService";
 import HeroDescription from "../heroDescription/heroDescription";

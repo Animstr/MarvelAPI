@@ -4,7 +4,7 @@ const useMarvelService = () => {
     const _apiBase = 'https://gateway.marvel.com:443/v1/public';
     const _apiKey = 'apikey=20c048de6ffdd8d7ac72d74b97f7d8a6';
     const _apiOffset = 210;
-    const {loading, error, request, skipError} = useHttp();
+    const {loading, error, request, skipError, setError} = useHttp();
 
     const getAllCharacters = async (offset = _apiOffset) => {
         const res = await request(`${_apiBase}/characters?limit=9&offset=${offset}&${_apiKey}`);
@@ -38,6 +38,18 @@ const useMarvelService = () => {
         const response = await request(`${_apiBase}/characters/${id}?${_apiKey}`)
         return _transformCharRes(response.data.results[0]);
     }
+
+    const getCharacterByName = async (name) => {
+        const res = await request(`${_apiBase}/characters?nameStartsWith=${name}&${_apiKey}`)
+        
+        /* if (res.data.results.length > 0) { */
+            return _transformCharRes(res.data.results[0]);
+        /* } else {
+            setError(true);
+            return error;
+        } */
+    }
+
     const _transformCharRes = (path) => {
         let filteredDescription = '';
 
@@ -69,7 +81,7 @@ const useMarvelService = () => {
             language: path.textObjects[0] ? 'Language:' + ' ' + path.textObjects[0].language : 'not available'
         }
     }
-    return {getCharacter, getAllCharacters, loading, error, skipError, getAllComics, getComic}
+    return {getCharacter, getAllCharacters, loading, error, skipError, getAllComics, getComic, getCharacterByName}
 }
 
 export default useMarvelService;

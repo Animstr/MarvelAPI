@@ -35,61 +35,105 @@
             transform: translateY(-9px);
         }
     }
-    .hero-description {
-        padding: 25px;
+    .descriptionAndSearch {
+        position: relative;
         grid-column: 4 / 5;
-        grid-row: 1 / 4;
+        grid-row: 1 / 2;
         height: fit-content;
-        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
-        .hero-preview {
-            display: flex;
-            img {
-                width: 150px;
-                height: 150px;
-                object-fit: cover;
-                margin-right: 25px;
-            }
-            h2 {
-                margin: 0;
-                font-size: 22px;
-                font-weight: 700;
-            }
-            .btn {
-                margin: 0;
-                margin-top: 35px;
-                width: 101px;
-                &-grey {
-                    margin-top: 10px;
+        .content-search{
+            background-color: #fff;
+            margin-top: 30px;
+            padding: 25px;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 21px;
+            color: #000000;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+            .input-form {
+                margin-top: 18px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                .input-error{
+                    margin-top: 25px;
+                    color: #9F0013;
+                }
+                input {
+                    width: 250px;
+                    height: 38px;
+                    padding: 0 10px 0 10px;
+                    border: 0px;
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                }
+                .btn {
+                    width: 101px;
+                    height: 38px;
+                    margin: 0 0;
+                    margin-left: 24px;
+                    &-grey {
+                       margin-top: 15px; 
+                    }
+                }
+                .input-succsess {
+                    margin-top: 22px;
+                    color: #03710E;
                 }
             }
         }
-        .description {
-            margin-top: 21px;
-            font-size: 14px;
-            font-weight: 400;
-        }
-        h2 {
-            margin-top: 16px;
-            font-size: 18px;
-            font-weight: 700;
-        }
-        .comics-item {
-            padding: 4px 0 4px 10px;
-            padding-left: 10px;
-            margin-top: 10px;
-            font-size: 14px;
-            font-weight: 400;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-            a{
-                color: black;
+        .hero-description {   
+            padding: 25px;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+            .hero-preview {
+                display: flex;
+                img {
+                    width: 150px;
+                    height: 150px;
+                    object-fit: cover;
+                    margin-right: 25px;
+                }
+                h2 {
+                    margin: 0;
+                    font-size: 22px;
+                    font-weight: 700;
+                }
+                .btn {
+                    margin: 0;
+                    margin-top: 35px;
+                    width: 101px;
+                    &-grey {
+                        margin-top: 10px;
+                    }
+                }
+            }
+            .description {
+                margin-top: 21px;
+                font-size: 14px;
+                font-weight: 400;
+            }
+            h2 {
+                margin-top: 16px;
+                font-size: 18px;
+                font-weight: 700;
+            }
+            .comics-item {
+                padding: 4px 0 4px 10px;
+                padding-left: 10px;
+                margin-top: 10px;
+                font-size: 14px;
+                font-weight: 400;
+                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+                a{
+                    color: black;
+                }
+            }
+            .no-comics{
+                margin-top: 10px;
+                font-size: 20px;
+                font-weight: 700;
             }
         }
-        .no-comics{
-            margin-top: 10px;
-            font-size: 20px;
-            font-weight: 700;
-        }
     }
+
     .btn {
         display: block;
         margin: 0 24% 45px;

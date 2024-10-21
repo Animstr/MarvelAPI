@@ -4,6 +4,7 @@ import Button from "../buttons/button";
 import ErrorMessage from "../errorMessage/errorMessage";
 import useMarvelService from "../../services/MarvelService";
 import Skeleton from "../skeleton/Skeleton";
+import SearchPanel from "../searchPanel/searchPanel";
 
 const HeroDescription = (props) => {
 
@@ -32,10 +33,13 @@ const HeroDescription = (props) => {
     const charBlock = !(loading || error || !char || loadForFirstRender) ? <CharDescriptionWraper char={char}/> : null;
 
     return (
-        <div className="hero-description">
-            {loadingBlock}
-            {errorBlock}
-            {charBlock}
+        <div className="descriptionAndSearch">
+            <div className="hero-description">
+                {loadingBlock}
+                {errorBlock}
+                {charBlock}
+            </div>
+            <SearchPanel/>
         </div>
         )
 }

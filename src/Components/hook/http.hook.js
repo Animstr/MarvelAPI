@@ -29,5 +29,5 @@ export const useHttp = () => {
     const skipError = () => {
         setError(false);
     }
-    return {loading, error, request, skipError};
+    return {loading, error, request, skipError, setError};
 }
