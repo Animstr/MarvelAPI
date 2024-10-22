@@ -17,7 +17,7 @@ const Header = () => {
                 <Col className='header__left'>
                 <NavLink end to={'/'} style={({isActive}) => ({color: isActive ? 'red' : 'black'})}><span>Characters</span></NavLink>
                     / 
-                <NavLink to={'/comics'} style={({isActive}) => ({color: isActive ? 'red' : 'black'})}>Comics</NavLink>
+                <NavLink to={`/comics`} style={({isActive}) => ({color: isActive ? 'red' : 'black'})}>Comics</NavLink>
                 </Col>
             </Row>
         </Container>

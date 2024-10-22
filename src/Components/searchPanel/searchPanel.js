@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import useMarvelService from '../../services/MarvelService';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function SearchPanel () {
     const {getCharacterByName} = useMarvelService();
@@ -17,7 +18,7 @@ function SearchPanel () {
     const validationSuccsess = char.name ?
                                     <>
                                         <div className='input-succsess'>There is! Visit {char.name} page?</div>
-                                        <button className='btn btn-grey'>TO PAGE</button>
+                                        <Link to={`/char/${char.name}`}><button className='btn btn-grey'>TO PAGE</button></Link>
                                     </> : null;
                                 
     return (
