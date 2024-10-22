@@ -4,7 +4,7 @@ import { Comic } from '../Components/ComicsPage/comic/comic';
 const ComicPage = () => {
 
     return (
-        <>
+        <>  
             <ComicsPromo/>
             <Comic/>
         </>

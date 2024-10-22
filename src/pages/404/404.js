@@ -7,6 +7,13 @@ const Page404 = () => {
 
     return ( 
         <div className="NotFound-wrapper">
+            <Helmet>
+                <meta
+                    name="description"
+                    content="Error page"
+                />
+                <title>Error page</title>
+            </Helmet>
             <ErrorMessage/>
             Page not found <br/>
             <Link to='/'>Return to main page</Link>

@@ -1,5 +1,6 @@
 import { Spinner } from "../../spinner/spinner";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 import ErrorMessage from "../../errorMessage/errorMessage";
 import useMarvelService from "../../../services/MarvelService";
@@ -42,6 +43,13 @@ export const Comic = () => {
 
     return (
         <Container>
+            <Helmet>
+                <meta
+                    name="description"
+                    content="comic page"
+                />
+                <title>Comic page</title>
+            </Helmet>
             <div className='comic_wrapper'>
                 {loadingBlock}
                  {errorBlock}
@@ -59,6 +67,13 @@ const ComicWrapper = ({comic}) => {
     const comicPrice = price ? <div className='comic_price'>{price}</div> : null;
     return (
         <>
+            <Helmet>
+                <meta
+                    name="description"
+                    content="comic page"
+                />
+                <title>{title ? title : name } comic page</title>
+            </Helmet>
             <img src={thumbnail} alt='comic_cover' className='comic_cover'/>
             <div className='comic_text'>
                 <h2>{title ? title : name}</h2>
